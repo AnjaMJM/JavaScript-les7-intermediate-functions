@@ -2,7 +2,8 @@
 // maar ook een manier moeten vinden om hetgeen dat je verzamelt ergens te bundelen. Op deze manier zul je ontdekken hoe je omgaat met scope. Pak vooral het hoofdstuk op EdHub over for-loops er nog eens bij!
 // Tip: je mag hier geen ingebouwde object methoden gebruiken, dus daar hoef je niet naar te kijken.
 
-const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
+// const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
+
 
 /* Opdracht  1: Cum Laude */
 
@@ -17,6 +18,24 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 // ---- Verwachte uitkomst: 6
 
 
+//1 loop de array om te controleren op cijfers 8 of hoger (>= 8)
+//1a zorg dat loop altijd even lang is als array (.length)
+//2 maak een counter die bijhoudt hoeveel cijfers voldoen aan voorwaarde
+//3 log aantal cumLaudeGraduates
+
+// let cumLaude = 1
+//
+//
+// for (let i = 0; i < grades.length; i++) {
+//     if ( grades[i] >= 8) {
+//         const cumLaudeGraduates = cumLaude++
+//         console.log(cumLaudeGraduates)
+//
+//     }
+// }
+
+
+
 /*  1b: Omschrijven tot een herbruikbare functie   */
 // Schrijf een functie genaamd cumLaude, die een array van cijfers verwacht (zoals grades) en het aantal Cum laude studenten teruggeeft. Gebruik hiervoor jouw antwoord van 1a.
 // Zorg ervoor dat jouw functie ook werkt als we een andere array met eindcijfers willen checken, zoals bijvoorbeeld: [6, 4, 5] of [8, 9, 4, 6, 10].
@@ -27,7 +46,20 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 // cumLaude([6, 4, 5]) geeft 0
 // cumLaude([8, 9, 4, 6, 10]) geeft 3
 
+const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
+function cumLaudeGraduates() {
 
+    for (let i = 0; i < grades.length; i++) {
+        if (grades[i] >= 8) {
+            let cumLaude = 1
+            return cumLaude++
+        }
+    }
+
+}
+
+
+console.log(cumLaudeGraduates(grades))
 
 
 /* Opdracht  2: Gemiddeld cijfer */
