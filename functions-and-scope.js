@@ -2,7 +2,7 @@
 // maar ook een manier moeten vinden om hetgeen dat je verzamelt ergens te bundelen. Op deze manier zul je ontdekken hoe je omgaat met scope. Pak vooral het hoofdstuk op EdHub over for-loops er nog eens bij!
 // Tip: je mag hier geen ingebouwde object methoden gebruiken, dus daar hoef je niet naar te kijken.
 
-// const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
+const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 
 
 /* Opdracht  1: Cum Laude */
@@ -23,17 +23,15 @@
 //2 maak een counter die bijhoudt hoeveel cijfers voldoen aan voorwaarde
 //3 log aantal cumLaudeGraduates
 
-// let cumLaude = 1
-//
-//
-// for (let i = 0; i < grades.length; i++) {
-//     if ( grades[i] >= 8) {
-//         const cumLaudeGraduates = cumLaude++
-//         console.log(cumLaudeGraduates)
-//
-//     }
-// }
+let students = 0
 
+
+for (let i = 0; i < grades.length; i++) {
+    if ( grades[i] >= 8) {
+        students++
+    }
+}
+console.log(students)
 
 
 /*  1b: Omschrijven tot een herbruikbare functie   */
@@ -46,20 +44,20 @@
 // cumLaude([6, 4, 5]) geeft 0
 // cumLaude([8, 9, 4, 6, 10]) geeft 3
 
-const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
-function cumLaudeGraduates() {
 
-    for (let i = 0; i < grades.length; i++) {
-        if (grades[i] >= 8) {
-            let cumLaude = 1
-            return cumLaude++
-        }
+function cumLaude(grades) {
+   let students = 0
+
+
+for (let i = 0; i < grades.length; i++) {
+    if ( grades[i] >= 8) {
+        students++
     }
-
+}
+return students
 }
 
-
-console.log(cumLaudeGraduates(grades))
+console.log(cumLaude([8, 9, 4, 6, 10]))
 
 
 /* Opdracht  2: Gemiddeld cijfer */
@@ -67,13 +65,23 @@ console.log(cumLaudeGraduates(grades))
 /* 2a: Script schrijven  */
 // De studenten-administratie moet ieder blok opnieuw berekenen wat het gemiddelde eindcijfer is, maar we beginnen met de grades array van hierboven.
 // Schrijf de stapjes om dit te kunnen berekenen eerst uit en vraag jezelf de volgende dingen af:
-// * Hoe wordt een gemiddelde berekend?
-// * Wat moet ik verzamelen uit de array van cijfers om uiteindelijk een gemiddelde te kunnen berekenen?
-// * Hoe zorgt ik ervoor dat ik alle waardes uit de array kan langslopen, ook als de array wel 100 entries zou bevatten?
+// * Hoe wordt een gemiddelde berekend? Alle cijfers optellen en delen door aantal
+// * Wat moet ik verzamelen uit de array van cijfers om uiteindelijk een gemiddelde te kunnen berekenen? alle cijfers
+// * Hoe zorgt ik ervoor dat ik alle waardes uit de array kan langslopen, ook als de array wel 100 entries zou bevatten? array.length
 // Log het antwoord in de terminal.
 
 // ---- Verwachte uitkomst: 6.642857142857143
 
+let sumOfGrades = 0
+let numberOfGrades = 0
+
+for (let i = 0; i < grades.length; i++) {
+    sumOfGrades += grades[i]
+    numberOfGrades++
+    average = sumOfGrades / numberOfGrades
+}
+
+console.log(average)
 
 /* 2b: Omschrijven tot een herbruikbare functie */
 // Schrijf een functie genaamd averageGrade, die een array van cijfers verwacht (zoals grades) en het gemiddelde cijfer teruggeeft. Gebruik hiervoor jouw antwoord van 2a.
@@ -85,12 +93,27 @@ console.log(cumLaudeGraduates(grades))
 // averageGrade([6, 4, 5]) geeft xxxx
 // averageGrade([8, 9, 4, 6, 10]) geeft xxxx
 
+function averageGrades(grades) {
+    let sumOfGrades = 0
+    let numberOfGrades = 0
+
+    for (let i = 0; i < grades.length; i++) {
+        sumOfGrades += grades[i]
+        numberOfGrades++
+        average = sumOfGrades / numberOfGrades
+    }
+
+    return average
+}
+
+console.log(averageGrades([8, 9, 4, 6, 10]))
 
 /* 2c: Afronden op twee decimalen */
 // Zorg ervoor dat het gemiddelde cijfer dat wordt teruggegeven uit de functie netjes wordt afgerond op twee decimalen.
 // Tip: Google is your best friend!
 
-
+// Om een afgerond nummer als getal terug te geven eerst (getal*10) (of meer nullen, elke 0=1decimaal)/10(of meer nullen)
+console.log(Math.round(averageGrades(grades)*100)/100)
 
 
 /* Bonusopdracht: hoogste cijfer */
