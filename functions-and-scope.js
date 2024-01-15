@@ -2,8 +2,8 @@
 // maar ook een manier moeten vinden om hetgeen dat je verzamelt ergens te bundelen. Op deze manier zul je ontdekken hoe je omgaat met scope. Pak vooral het hoofdstuk op EdHub over for-loops er nog eens bij!
 // Tip: je mag hier geen ingebouwde object methoden gebruiken, dus daar hoef je niet naar te kijken.
 
-const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
-
+const grades = [5, 8, 5, 7, 7, 4, 4, 8, 8, 3, 6, 8, 5, 6, 9];
+// Kan zijn dat de uitkomsten niet meer kloppen met oorspronkelijke opdracht, omdat ik de cijfers in deze array heb aangepast om mijn code te kunnen checken.
 
 /* Opdracht  1: Cum Laude */
 
@@ -122,11 +122,24 @@ console.log(Math.round(averageGrades(grades)*100)/100)
 // Schrijf een script die op basis van de grades array (hierboven) checkt wat het hoogst behaalde cijfer is. Je mag hier geen bestaande methoden voor gebruiken. Schrijf de stapjes eerst uit en vraag jezelf de volgende dingen af:
 // * Hoe kan ik iedere waarde van de array langsgaan?
 // * Op welke conditie moet ik checken?
-// * Hoe zorgt ik ervoor dat wanneer ik een cijfer tegenkom die aan de conditie voldoet, ik dit ergens kan opslaan?
+// * Hoe zorg ik ervoor dat wanneer ik een cijfer tegenkom die aan de conditie voldoet, ik dit ergens kan opslaan?
 // Log het antwoord in de terminal.
 
 // ---- Verwachte uitkomst: 9
 
+// 1 door de lijst 'grades' itereren in for-loop: grades.length
+// 2 is cijfer hoger dan variabele gradeCheck (naam ivm latere functie highestGrade?
+// 3 hoogste cijfer opslaan in variabele gradeCheck dmv if statement
+
+let gradeCheck = 0
+
+for (let i = 0; i < grades.length; i++) {
+    if (grades[i] > gradeCheck) {
+        gradeCheck = grades[i]
+    }
+}
+
+console.log(gradeCheck)
 
 /* 3b: Omschrijven tot een herbruikbare functie */
 // Schrijf een functie genaamd highestGrade, die een array van cijfers verwacht (zoals grades) en het hoogste cijfer teruggeeft. Gebruik hiervoor jouw antwoord van 3a.
@@ -137,3 +150,16 @@ console.log(Math.round(averageGrades(grades)*100)/100)
 // highestGrade(grades) geeft 9
 // highestGrade([6, 4, 5]) geeft 6
 // highestGrade([8, 9, 4, 6, 10]) geeft 10
+
+function highestGrade(grades) {
+    let gradeCheck = 0
+
+    for (let i = 0; i < grades.length; i++) {
+        if (grades[i] > gradeCheck) {
+            gradeCheck = grades[i]
+        }
+    }
+    return gradeCheck
+}
+
+console.log(highestGrade([8, 9, 4, 6, 10]))
